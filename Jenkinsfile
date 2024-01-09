@@ -3,12 +3,12 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aksh1710/demo-counter-app.git' 
+                git branch: 'main', url: 'https://github.com/Aksh1710/demo-counter-app.git'
             }
         }
         stage('Unit Testing'){
             steps{
-                sh 'mvn test' 
+                sh 'mvn test'
             }
         }
         stage('Integration testing'){
@@ -17,9 +17,10 @@ pipeline{
             }
         }
         stage('Maven Build'){
-	    steps{
-		sh 'mvn clean install'
-}
-}
-}
+            steps{
+                sh 'mvn clean install'
+            }
+        }    
+    }  
+} 
 
