@@ -16,15 +16,21 @@ pipeline{
                 sh'mvn verify -DskipUnitTests'
             }
         }
-        stage('Docker build'){
-            steps{
-                script{
-                    sh 'docker image build -t $job_name:v1.$BUILD_ID .'
-                    sh 'docker image tag $job_name:v1.$BUILD_ID aksh3456/$job_name:v1.$BUILD_ID'
-                    sh 'docker image tag $job_name:v1.$BUILD_ID aksh3456/$job_name:latest'
-                }
-            }
+        stage('Docker build') {
+    steps {
+        script {
+            echo "Job Name: $job_name"
+            echo "Build ID: $BUILD_ID"
+
+            sh 'docker image build -t $job_name:v1.$BUILD_ID .'
+            sh 'docker image tag $job_name:v1.$BUILD_ID aksh3456/$job_name:v1.$BUILD_ID'
+            sh 'docker image tag $job_name:v1.$BUILD_ID aksh3456/$job_name:latest'
         }
+        
+        }
+    }
+}
+
         stage('push the image to docker hub'){
             steps{
                 script{
