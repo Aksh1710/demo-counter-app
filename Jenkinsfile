@@ -32,7 +32,9 @@ pipeline{
 			         sh 'docker login -u aksh3456 -p $(Dockerhub_Cred)'
 			         sh 'docker image push aksh3456/$JOB_NAME:v1.$BUILD_ID'
 			         sh 'docker image push aksh3456/$JOB_NAME:latest'
+                     }
                 }
+
             }     
         }
 
@@ -43,4 +45,3 @@ pipeline{
   
       
  
-
