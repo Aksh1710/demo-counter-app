@@ -25,8 +25,21 @@ pipeline{
                 }
             }
         }
+        stage('push the image to docker hub'){
+            steps{
+                script{
+                     withCredentials([string(credentialsId: 'docker_cred', variable: 'Dockerhub_Cred')])
+			         sh 'docker login -u aksh3456 -p $(Dockerhub_Cred)'
+			        sh 'docker image push aksh3456/demoproject_1:$BUILD_ID' 
+                }
+            }     
+        }
+
     }
+}    
 
-} 
 
+  
+      
+ 
 
